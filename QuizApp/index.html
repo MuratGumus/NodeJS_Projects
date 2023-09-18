@@ -1,26 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soru Sitesi</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="questions">
-        <label for="" id="question0"></label>
-        <input type="text" name="" id="answer0">
-        <label for="" id="question1"></label>
-        <input type="text" name="" id="answer1">
-        <label for="" id="question2"></label>
-        <input type="text" name="" id="answer2">
-        <label for="" id="question3"></label>
-        <input type="text" name="" id="answer3">
-        <input type="submit" id="send" value="Send">
-        <p id="result"></p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Soru Sitesi</title>
+        <style>
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="questions">
+            <label for="" id="question0"></label>
+            <input type="text" name="" id="answer0" />
+            <label for="" id="question1"></label>
+            <input type="text" name="" id="answer1" />
+            <label for="" id="question2"></label>
+            <input type="text" name="" id="answer2" />
+            <label for="" id="question3"></label>
+            <input type="text" name="" id="answer3" />
+            <input type="submit" id="send" value="Send" />
+            <p id="result"></p>
+        </div>
 
-    </div>
+        <script>
+            const dataArray = [
+                {
+                    id: 0,
+                    question: " Türkiye'nin başkenti neresidir? ",
+                    answer: "ANKARA",
+                },
+                {
+                    id: 1,
+                    question: " Fransa'nin başkenti neresidir?",
+                    answer: "PARIS",
+                },
+                {
+                    id: 2,
+                    question: " İngiltere'nin başkenti neresidir? ",
+                    answer: "LONDRA",
+                },
+                {
+                    id: 3,
+                    question: " 25 + 25 kactir  ",
+                    answer: "50",
+                },
+            ];
+            document.getElementById("question0").innerHTML =
+                dataArray[0].question;
+            document.getElementById("question1").innerHTML =
+                dataArray[1].question;
+            document.getElementById("question2").innerHTML =
+                dataArray[2].question;
+            document.getElementById("question3").innerHTML =
+                dataArray[3].question;
 
-<script src="app.js"></script>
-</body>
+            let score = 0;
+
+            document
+                .getElementById("send")
+                .addEventListener("click", function () {
+                    if (
+                        document
+                            .getElementById("answer0")
+                            .value.toUpperCase() === dataArray[0].answer
+                    ) {
+                        score += 1;
+                    }
+                    if (
+                        document
+                            .getElementById("answer1")
+                            .value.toUpperCase() === dataArray[1].answer
+                    ) {
+                        score += 1;
+                    }
+                    if (
+                        document
+                            .getElementById("answer2")
+                            .value.toUpperCase() === dataArray[2].answer
+                    ) {
+                        score += 1;
+                    }
+                    if (
+                        document
+                            .getElementById("answer3")
+                            .value.toUpperCase() === dataArray[3].answer
+                    ) {
+                        score += 1;
+                    }
+                });
+            document.getElementById("result").innerHTML = "Score: " + score;
+        </script>
+    </body>
 </html>
