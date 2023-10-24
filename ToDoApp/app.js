@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json())
 
 
+// Database connection. //Database'e bağladık
+app.use('./App/dbConnection.js')
 
-app.use()
+// errorHandler (Catch Errors) // Hata yakalamayı aktifleştirdik.
+app.use('./App/errorHandler.js')
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
