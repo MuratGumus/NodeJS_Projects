@@ -2,20 +2,26 @@
 /* -------------------------------------------------------
     EXPRESSJS - TODO Project with Sequelize
 ------------------------------------------------------- */
+
 const express = require("express");
 const app = express();
 
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
+
 /* ------------------------------------------------------- */
-// Accept json data & convert to object: objeye çevirir
+// Accept json data & convert to object:
 app.use(express.json())
 
+// Router:
+app.use(require('./app/routes/todo'))
 
-// Database connection. //Database'e bağladık
-app.use('./App/dbConnection.js')
+// DatabaseConnection:
+const { dbConnection } = require('./app/dbConnection')
+dbConnection() // sequelize.sync() must run after model defines.
 
-// errorHandler (Catch Errors) // Hata yakalamayı aktifleştirdik.
-app.use('./App/errorHandler.js')
+// errorHandler (Catch Errors):
+app.use(require('./app/errorHandler'))
+
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
